@@ -1,0 +1,23 @@
+{
+  "users": [
+    { "id": 1, "name": "John" },
+    { "id": 2, "name": "Jane" }
+  ],
+  "cart": [
+    {
+        "id": 1,
+        "name": "苹果",
+        "price": 1.28
+    },
+    {
+        "id": 2,
+        "name": "橘子",
+        "price": 3.88
+    },
+    {
+        "id": 3,
+        "name": "西瓜",
+        "price": 1.98
+    }
+  ]
+}

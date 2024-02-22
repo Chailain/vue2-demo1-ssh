@@ -1,0 +1,39 @@
+@import "./normalize.css";
+
+// 重置默认样式 初始化页面的默认样式
+  // 1. word-break这个属性 用来控制 单词如何被拆分换行 单词内的断句
+  // “单词”包括连续的中文字符/日文/韩文等文本
+  // 所有“单词”【碰到边界】一律拆分换行 强制拆分换行 慎重使用break-all
+  // word-break: break-all;
+  // 2. white-space这个属性 用来控制 空白字符的显示 nowrap永不换行 <br>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 文字溢出省略号   ellipsis省略号 text文本,文字 两行省略
+// 多行文本溢出省略（按行数）
+// 多适用于移动端页面，因为移动设备浏览器更多是基于 WebKit 内核
+// 兼容性一般： -webkit-line-clamp 属性只有 WebKit 内核的浏览器才支持
+.text-ellipsis-2 {
+  // 隐藏 超出的 文字/文本
+  overflow: hidden;
+  // 用来限制在一个块元素显示的文本的行数, 2 表示最多显示 2 行
+  // 为了实现该效果，它需要组合其他的WebKit属性
+  -webkit-line-clamp: 2;
+  // 当文本溢出时，用省略号显示，显示那3个点
+  text-overflow: ellipsis;
+  // 必须结合使用的属性，将对象作为 弹性伸缩盒子模型 显示
+  display: -webkit-box;
+  // 必须结合使用的属性 ，设置或检索 伸缩盒对象/伸缩盒子的 子元素的排列方式 
+  // 从上到下 垂直排列 子元素
+  -webkit-box-orient: vertical;
+}
+
+// vant 通用样式覆盖 NavBar导航栏
+.van-nav-bar {
+  .van-nav-bar__arrow {
+    color: #333;
+  }
+}
