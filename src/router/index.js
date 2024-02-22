@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/login'
 import Layout from '@/views/layout'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -49,6 +50,24 @@ const router = new VueRouter({
   // 自定义<router-link></router-link>默认的高亮类名 关键字link配置
   linkActiveClass: 'active',
   linkExactActiveClass: 'exact-active'
+})
+
+const authUrl = ['/pay', '/myorder']
+// 全局前置守卫 路由信息对象to,from
+router.beforeEach((to, from, next) => {
+  const token = store.getters.token
+  // 要访问的path
+  if (!authUrl.includes(to.path)) {
+    next()
+    return
+  }
+  if (token) {
+    // 如果已经登录，则直接进入对应的路由
+    next()
+  } else {
+    // 如果未登录，则跳转到登录页面
+    next('/login')
+  }
 })
 
 export default router
