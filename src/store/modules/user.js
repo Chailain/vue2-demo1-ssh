@@ -1,15 +1,23 @@
 import { getInfo, setInfo } from '@/utils/storage'
 
-const state = {
-  // {
-  //   token: '',
-  //   // 用户的唯一标识
-  //   userId: ''
-  // }
-  // 从本地存储拿 读取不到也会给默认值
-  // 刷新页面 -> 去初始化vuex的起始的数据
-  userInfo: getInfo()
+// const state = {
+//   // {
+//   //   token: '',
+//   //   // 用户的唯一标识
+//   //   userId: ''
+//   // }
+//   // 从本地存储拿 读取不到也会给默认值
+//   // 刷新页面 -> 去初始化vuex的起始的数据
+//   userInfo: getInfo()
+// }
+
+function state () {
+  return {
+    userInfo: getInfo(),
+    textSearch: '测试无用变量'
+  }
 }
+
 const getters = {
 }
 const mutations = {

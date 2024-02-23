@@ -20,6 +20,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    // 小模块注册    keyName随意-模块名：模块对象
     user,
     cart
   }

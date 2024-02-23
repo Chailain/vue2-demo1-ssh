@@ -1,4 +1,4 @@
-export default {
+const cartModule = {
   namespaced: true,
   state () {
     return {
@@ -6,3 +6,4 @@ export default {
     }
   }
 }
+export default cartModule

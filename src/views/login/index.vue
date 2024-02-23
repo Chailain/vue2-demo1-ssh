@@ -132,7 +132,7 @@ export default {
       this.$toast('登录成功')
     }
   },
-  destroyed () {
+  beforeDestroy () {
     clearInterval(this.timerId)
   }
 }
