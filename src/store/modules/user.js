@@ -13,8 +13,7 @@ import { getInfo, setInfo } from '@/utils/storage'
 
 function state () {
   return {
-    userInfo: getInfo(),
-    textSearch: '测试无用变量'
+    userInfo: getInfo()
   }
 }
 

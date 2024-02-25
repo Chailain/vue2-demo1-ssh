@@ -32,6 +32,7 @@ const routes = [
   },
   {
     path: '/prodetail/:id',
+    name: 'prodetail',
     component: () => import('../views/prodetail')
   },
   {
