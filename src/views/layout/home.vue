@@ -11,6 +11,7 @@
         placeholder="请输入搜索关键词"
         shape="round"
         background="#ccc"
+        @search="$router.push('/search')"
       />
     </div>
 

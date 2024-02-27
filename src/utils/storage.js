@@ -1,5 +1,6 @@
 // 用户信息 本地持久化 key名 字符串格式的 'obj_user_info'
 const INFO_KEY = 'obj_user_info'
+const HISTORY_KEY = 'hm_history_list'
 
 // 获取个人信息
 export const getInfo = () => {
@@ -27,3 +28,15 @@ export const setInfo = (info) => {
 // export const removeInfo = () => {
 //   localStorage.removeItem(INFO_KEY)
 // }
+
+// 获取搜索历史记录
+export const getHistoryList = () => {
+  // 获取localStorage中HISTORY_KEY的值-->如果转换失败，则返回空数组
+  const result = localStorage.getItem(HISTORY_KEY)
+  return result ? JSON.parse(result) : []
+}
+
+// 设置搜索历史记录
+export const setHistoryList = (arr) => {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(arr))
+}
