@@ -11,18 +11,24 @@
 </template>
 
 <script>
-import { getHomeData } from '@/api/home.js'
+// import { getHomeData } from '@/api/home.js'
+import { getCategoryData } from '@/api/category'
 
 export default {
   // name: 'LayoutIndex'
   name: 'LayoutIndex',
   created () {
     this.getHomeData()
+    this.getCategoryList()
   },
   methods: {
     async getHomeData () {
-      const res = await getHomeData()
-      console.log(res)
+      // const res = await getHomeData()
+      // console.log(res)
+    },
+    async getCategoryList () {
+      const { data: { list } } = await getCategoryData()
+      console.log(list)
     }
   }
 }
