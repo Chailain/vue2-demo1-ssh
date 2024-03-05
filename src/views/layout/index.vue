@@ -12,7 +12,7 @@
 
 <script>
 // import { getHomeData } from '@/api/home.js'
-import { getCategoryData } from '@/api/category'
+// import { getCategoryData } from '@/api/category'
 
 export default {
   // name: 'LayoutIndex'
@@ -27,8 +27,8 @@ export default {
       // console.log(res)
     },
     async getCategoryList () {
-      const { data: { list } } = await getCategoryData()
-      console.log(list)
+      // const { data: { list } } = await getCategoryData()
+      // console.log(list)
     }
   }
 }

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Toast } from 'vant'
+import store from '@/store'
 
 const baseURL = 'http://cba.itlike.com/public/index.php?s=/api/'
 const request = axios.create({
@@ -19,6 +20,15 @@ request.interceptors.request.use(function (config) {
     // 展示时长(ms)：number，值为 0 时，toast 不会消失 默认2000 2s自动消失
     duration: 0
   })
+
+  // 统一添加 请求头->token，平台
+  const token = store.getters.token
+  if (token) {
+    // 'Access-Token'作为属性名 与接口文档要求保持一致
+    config.headers['Access-Token'] = token
+    // 运行的平台
+    config.headers.platform = 'H5'
+  }
   return config
 }, function (error) {
   // 对请求错误做些什么

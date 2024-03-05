@@ -128,8 +128,10 @@ export default {
       }
       const res = await codeLogin(this.mobile, this.msgCode)
       this.$store.commit('user/setUserInfo', res.data)
-      this.$router.push('/')
       this.$toast('登录成功')
+      // 判断有无回跳地址
+      const url = this.$route.query.backUrl || '/'
+      this.$router.replace(url)
     }
   },
   beforeDestroy () {

@@ -16,7 +16,7 @@
     </div>
 
     <div class="swiper-box">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="red">
         <van-swipe-item v-for="item in bannerList" :key="item.imgUrl">
           <img :src="item.imgUrl" alt="">
         </van-swipe-item>
