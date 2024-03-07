@@ -32,6 +32,12 @@ const mutations = {
   }
 }
 const actions = {
+  logout (context) {
+    // 重置个人信息
+    context.commit('setUserInfo', {})
+    // 重置购物车
+    context.commit('cart/setCartList', [], { root: true })
+  }
 }
 
 export default {

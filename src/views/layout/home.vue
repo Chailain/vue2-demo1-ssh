@@ -76,7 +76,7 @@ export default {
   methods: {
     async getHomeData () {
       const { data: { pageData } } = await getHomeData()
-      console.log(pageData)
+      // console.log(pageData)
       this.bannerList = pageData.items[1].data
       this.navList = pageData.items[4].data
       this.proList = pageData.items[6].data

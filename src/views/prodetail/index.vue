@@ -116,7 +116,10 @@
           <div class="btn" v-if="mode === 'cart'" @click="addCart">
             加入购物车
           </div>
-          <div class="btn now" v-else>立刻购买</div>
+          <div class="btn now"
+            v-if="mode === 'buyNow'"
+            @click="goBuyNow"
+          >立刻购买</div>
         </div>
         <!-- 库存为0没有了 -->
         <div class="btn-none" v-else>该商品已抢完</div>
@@ -132,11 +135,13 @@ import MyText from '@/components/MyText.vue'
 import { getProDetail, getProComments } from '@/api/product'
 import defaultImg from '@/assets/default-avatar.png'
 import CountBox from '@/components/CountBox.vue'
+import loginConfirm from '@/mixins/loginConfirm'
 // 添加商品到购物车
 import { addCart } from '@/api/cart'
 export default {
   components: { MyText, CountBox },
   name: 'ProDetail',
+  mixins: [loginConfirm],
   data () {
     return {
       images: [
@@ -192,25 +197,7 @@ export default {
     },
     async addCart () {
       // 判断用户是否有登录
-      if (!this.$store.getters.token) {
-        // 确认弹框 展示消息确认弹窗 通过函数调用
-        // 标题 文本内容 确认按钮文案 取消按钮文案
-        this.$dialog.confirm({
-          title: '温馨提示',
-          message: '此时需要先登录才能继续操作哦',
-          confirmButtonText: '去登录',
-          confirmButtonColor: '#afd',
-          cancelButtonText: '再逛逛'
-        })
-          .then(() => {
-            this.$router.replace({
-              path: '/login',
-              query: {
-                backUrl: this.$route.fullPath
-              }
-            })
-          })
-          .catch(() => {})
+      if (this.loginConfirm()) {
         return
       }
       // '/cart/add' 进行加入购物车操作 选择商品的规格
@@ -219,6 +206,20 @@ export default {
       this.$toast('加入购物车成功')
       // 关闭弹层 ActionSheet动作面板
       this.showPannel = false
+    },
+    goBuyNow () {
+      if (this.loginConfirm()) {
+        return
+      }
+      this.$router.push({
+        path: '/pay',
+        query: {
+          mode: 'buyNow',
+          goodsId: this.goodsId,
+          goodsSkuId: this.detail.skuList[0].goods_sku_id,
+          goodsNum: this.addCount
+        }
+      })
     }
   },
   created () {

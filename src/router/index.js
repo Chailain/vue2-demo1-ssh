@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/login'
-import Layout from '@/views/layout'
 import store from '@/store'
 import MyText from '@/components/MyText.vue'
+// 首页相关 用户频繁访问 采用默认加载
+import Layout from '@/views/layout'
+import HomeIndex from '@/views/layout/home.vue'
+import CategoryPage from '@/views/layout/category.vue'
+import CartIndex from '@/views/layout/cart.vue'
+import UserPage from '@/views/layout/user.vue'
+
+const Login = () => import('@/views/login')
 
 Vue.use(VueRouter)
 
@@ -17,10 +23,10 @@ const routes = [
     component: Layout,
     redirect: '/home',
     children: [
-      { path: '/home', component: () => import('../views/layout/home.vue') },
-      { path: '/category', component: () => import('../views/layout/category.vue') },
-      { path: '/cart', component: () => import('../views/layout/cart.vue') },
-      { path: '/user', component: () => import('../views/layout/user.vue') }
+      { path: '/home', component: HomeIndex },
+      { path: '/category', component: CategoryPage },
+      { path: '/cart', component: CartIndex },
+      { path: '/user', component: UserPage }
     ]
   },
   {
